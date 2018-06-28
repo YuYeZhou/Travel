@@ -12,77 +12,16 @@
       <div class="aera">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+          <div class="button-wrapper" v-for="city of hot" :key="city.id">
+            <div class="button">{{city.name}}</div>
           </div>
         </div>
       </div>
-      <div class="aera">
-        <div class="title border-topbottom">A</div>
+      <div class="aera"  v-for="(item, key) of cities" :key="key">
+        <div class="title border-topbottom">{{key}}</div>
           <div class="item-list">
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-        </div>
-        <div class="title border-topbottom">A</div>
-          <div class="item-list">
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-        </div>
-        <div class="title border-topbottom">A</div>
-          <div class="item-list">
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-        </div>
-        <div class="title border-topbottom">A</div>
-          <div class="item-list">
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-        </div>
-        <div class="title border-topbottom">A</div>
-          <div class="item-list">
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-            <div class="item border-bottom">阿克苏</div>
-        </div>
+            <div class="item border-bottom" v-for="city of item" :key="city.id">{{city.name}}</div>
+          </div>
       </div>
     </div>
   </div>
@@ -92,6 +31,10 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    cities: Object,
+    hot: Array
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
   }
@@ -135,6 +78,7 @@ export default {
           border :.02rem solid #ccc
     .item-list
       line-height :.76rem
-      padding-left :.2rem
       color :#666
+      .item
+        padding-left :.2rem
 </style>
