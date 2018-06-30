@@ -4,7 +4,7 @@
       <div class="aera">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
-          <div class="button-wrapper">
+          <div class="button-wrapper" @click="backToHome">
             <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
@@ -38,6 +38,9 @@ export default {
     letter: String
   },
   methods: {
+    backToHome () {
+      this.$router.push('/')
+    },
     handleCityClick (city) {
       this.changeCity(city)
       this.$router.push('/')
